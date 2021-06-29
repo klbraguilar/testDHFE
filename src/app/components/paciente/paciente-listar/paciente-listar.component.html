@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="card" style="margin: 10px;">
+        <div class="card-header">
+            <h3>Pacientes</h3>
+        </div>
+        <div class="card-body">
+            <dx-data-grid id="gridContainer"
+                #grid
+                [dataSource]="pacientes"
+                [hoverStateEnabled]="true"
+                [showBorders]="true"
+                keyExpr="id"
+                [remoteOperations]="true"
+                [masterDetail]="{ enabled: true, template: 'detail' }"
+                >
+                <dxo-filter-row 
+                    [visible]="showFilterRow" 
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+                <dxo-search-panel 
+                [visible]="true" 
+                [width]="240" 
+                placeholder="Search..."></dxo-search-panel>
+                <dxi-column
+                    dataField="id"
+                    caption="ID"
+                    width="70"
+                    dataType="number">
+                </dxi-column>
+                <dxi-column
+                    dataField="nombre"
+                    caption="Nombre"
+                    dataType="string">
+                </dxi-column>
+                <dxi-column
+                    dataField="apellido"
+                    caption="Apellido"
+                    dataType="string">
+                </dxi-column>
+                <dxi-column
+                    dataField="fechaNacimiento"
+                    caption="Fecha de Nacimiento"
+                    dataType="date"
+                    format="MM/dd/yyyy">
+                </dxi-column>
+                <dxi-column
+                    dataField="direccion"
+                    caption="Direccion"
+                    dataType="string">
+                </dxi-column>
+                <dxi-column
+                    dataField="telefono"
+                    caption="Telefono"
+                    dataType="number">
+                </dxi-column>
+                <dxo-paging [pageSize]="12"></dxo-paging>
+                <dxo-pager
+                    [showPageSizeSelector]="true"
+                    [allowedPageSizes]="[8, 12, 20]"
+                ></dxo-pager>
+                <div *dxTemplate="let consulta of 'detail'">
+                    <div class="master-detail-caption">{{"Histórico de consultas" +" "+ consulta.data.nombre + ":" }}</div>
+                    <dx-data-grid 
+                        [dataSource]="getTasks(consulta.key)"
+                        [showBorders]="true"
+                        [columnAutoWidth]="true">
+                            <dxi-column dataField="descripcion"></dxi-column>
+                            <dxi-column dataField="fecha" dataType="date"
+                            format="MM/dd/yyyy"></dxi-column>
+                            
+                    </dx-data-grid>       
+                </div>
+            </dx-data-grid>
+        </div>
+    </div>
+</div>

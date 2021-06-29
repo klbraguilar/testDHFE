@@ -1,0 +1,85 @@
+<div class="container col-md-6">
+    <div class="card" style="margin: 10px;">
+        <div class="card-header">
+            <h3>Modificar Datos</h3>
+        </div>
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <dx-text-box
+                        width="100%"
+                        placeholder="Nombre"
+                        [stylingMode]="stylingMode"
+                        [showClearButton]="true"
+                        type="text"
+                        style="margin-bottom: 10px;"
+                        [(ngModel)]="paciente.nombre" name="nombre"
+                    >
+                        <dx-validator [validationRules]="[{
+                            type: 'required'
+                        }]"></dx-validator>
+                    </dx-text-box>
+                </div>
+                <div class="form-group">
+                    <dx-text-box
+                        width="100%"
+                        placeholder="Apellido"
+                        [showClearButton]="true"
+                        [stylingMode]="stylingMode"
+                        [showClearButton]="true"
+                        style="margin-bottom: 10px;"
+                        [(ngModel)]="paciente.apellido" name="apellido"
+                    >
+                        <dx-validator [validationRules]="[{
+                            type: 'required'
+                        }]"></dx-validator>
+                    </dx-text-box>
+                </div>
+                <div class="form-group">
+                    <dx-date-box
+                        width="100%"
+                        placeholder="Fecha de Nacimiento"
+                        style="margin-bottom: 10px;"
+                        [(ngModel)]="paciente.fechaNacimiento" name="fecha_nacimiento"
+                    >
+                    <dx-validator [validationRules]="[{
+                        type: 'required'
+                    }]"></dx-validator>
+                    </dx-date-box>
+                </div>
+                <div class="form-group">
+                    <dx-text-box
+                        width="100%"
+                        placeholder="Direccion"
+                        [showClearButton]="true"
+                        [stylingMode]="stylingMode"
+                        style="margin-bottom: 10px;"
+                        [(ngModel)]="paciente.direccion" name="direccion"
+                    >
+                        <dx-validator [validationRules]="[{
+                            type: 'required'
+                        }]"></dx-validator>
+                    </dx-text-box>
+                </div>
+                <div class="form-group">
+                    <dx-number-box
+                        width="100%"
+                        placeholder="Telefono"
+                        [stylingMode]="stylingMode"
+                        [showClearButton]="true"
+                        style="margin-bottom: 10px;"
+                        [(ngModel)]="paciente.telefono" name="telefono"
+                    >
+                        <dx-validator [validationRules]="[{
+                            type: 'required'
+                        }]"></dx-validator>
+                    </dx-number-box>
+                </div>
+                <div class="col text-center">
+                    <button (click)="Actualizar(paciente)" style="margin-right: 5px;" class="btn btn-outline-success">Actualizar</button>
+                    <button (click)="Eliminar(paciente)" class="btn btn-outline-danger">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

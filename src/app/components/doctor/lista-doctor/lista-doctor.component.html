@@ -1,0 +1,58 @@
+
+<div class="container">
+    <div class="card" style="margin: 10px;">
+        <div class="card-header">
+            <h3>Doctores</h3>
+        </div>
+        <div class="card-body">
+            <dx-data-grid id="gridContainer"
+                #grid
+                (onRowClick)="Editar($event)"
+                [dataSource]="doctores"
+                [showBorders]="true"
+                [hoverStateEnabled]="true"
+                keyExpr="id"
+                [remoteOperations]="true"
+                >
+                <dxo-filter-row 
+                    [visible]="showFilterRow" 
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+                <dxo-search-panel 
+                [visible]="true" 
+                [width]="240" 
+                placeholder="Search..."></dxo-search-panel>
+                <dxi-column
+                    dataField="id"
+                    caption="ID"
+                    width="70"
+                    dataType="number">
+                </dxi-column>
+                <dxi-column
+                    dataField="nombre"
+                    caption="Nombre"
+                    dataType="string">
+                </dxi-column>
+                <dxi-column
+                    dataField="apellido"
+                    caption="Apellido"
+                    dataType="string">
+                </dxi-column>
+                <dxi-column
+                    dataField="fechaNacimiento"
+                    caption="Fecha de Nacimiento"
+                    dataType="date"
+                    format="MM/dd/yyyy">
+                </dxi-column>
+                <dxi-column
+                    dataField="direccion"
+                    dataType="string">
+                </dxi-column>
+                <dxo-paging [pageSize]="12"></dxo-paging>
+                <dxo-pager
+                    [showPageSizeSelector]="true"
+                    [allowedPageSizes]="[8, 12, 20]"
+                ></dxo-pager>
+            </dx-data-grid>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="container col-md-6">
+    <div class="card" style="margin: 10px;">
+        <div class="card-header">
+            <h3>Agregar Paciente</h3>
+        </div>
+        <div class="card-body">
+            <form action="" [formGroup]="pacienteForm">
+                <div class="form-group">
+                    <dx-text-box
+                        width="100%"
+                        placeholder="Nombre"
+                        [showClearButton]="true"
+                        [stylingMode]="stylingMode"
+                        type="text"
+                        style="margin-bottom: 10px;"
+                        formControlName="nombre"
+                    >
+                        <dx-validator [validationRules]="[{
+                            type: 'required'
+                        }]"></dx-validator>
+                    </dx-text-box>
+                </div>
+                <div class="form-group">
+                    <dx-text-box
+                        width="100%"
+                        placeholder="Apellido"
+                        [showClearButton]="true"
+                        [stylingMode]="stylingMode"
+                        style="margin-bottom: 10px;"
+                        formControlName="apellido"
+                    >
+                        <dx-validator [validationRules]="[{
+                            type: 'required'
+                        }]"></dx-validator>
+                    </dx-text-box>
+                </div>
+                <div class="form-group">
+                    <dx-date-box
+                        width="100%"
+                        placeholder="Fecha de Nacimiento"
+                        style="margin-bottom: 10px;"
+                        formControlName="fechaNacimiento"
+                    >
+                    <dx-validator [validationRules]="[{
+                        type: 'required'
+                    }]"></dx-validator>
+                    </dx-date-box>
+                </div>
+                <div class="form-group">
+                    <dx-text-box
+                        width="100%"
+                        placeholder="Direccion"
+                        [showClearButton]="true"
+                        [stylingMode]="stylingMode"
+                        style="margin-bottom: 10px;"
+                        formControlName="direccion"
+                    >
+                        <dx-validator [validationRules]="[{
+                            type: 'required'
+                        }]"></dx-validator>
+                    </dx-text-box>
+                </div>
+                <div class="form-group">
+                    <dx-number-box
+                        width="100%"
+                        placeholder="Telefono"
+                        [showClearButton]="true"
+                        [stylingMode]="stylingMode"
+                        style="margin-bottom: 10px;"
+                        formControlName="telefono"
+                    >
+                        <dx-validator [validationRules]="[{
+                            type: 'required'
+                        }]"></dx-validator>
+                    </dx-number-box>
+                </div>
+                <div class="col text-center">
+                    <button class="btn" [disabled]="pacienteForm.invalid" (click)="Nuevo()" class="btn btn-outline-success">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

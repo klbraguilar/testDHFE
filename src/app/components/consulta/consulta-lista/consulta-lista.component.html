@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="card" style="margin: 10px;">
+        <div class="card-header">
+            <h3>Consultas</h3>
+        </div>
+        <div class="card-body">
+            <dx-data-grid id="gridContainer"
+                #grid
+                (onRowClick)="Editar($event)"
+                [dataSource]="consultas"
+                [showBorders]="true"
+                [hoverStateEnabled]="true"
+                keyExpr="id"
+                [remoteOperations]="true"
+                >
+                <dxo-filter-row 
+                    [visible]="showFilterRow" 
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+                <dxo-search-panel 
+                [visible]="true" 
+                [width]="240" 
+                placeholder="Search..."></dxo-search-panel>
+                <dxi-column
+                    dataField="id"
+                    caption="ID"
+                    width="70"
+                    dataType="number">
+                </dxi-column>
+                <dxi-column
+                    dataField="descripcion"
+                    caption="Descripcion"
+                    dataType="string">
+                </dxi-column>
+                <dxi-column
+                    dataField="fecha"
+                    caption="Fecha de Visita"
+                    dataType="date"
+                    format="MM/dd/yyyy">
+                </dxi-column>
+                <dxi-column
+                    dataField="paciente.nombre"
+                    dataType="string"
+                    caption="Paciente">
+                </dxi-column>
+                <dxi-column
+                    dataField="doctor.nombre"
+                    dataType="string"
+                    caption="Doctor">
+                </dxi-column>
+                <dxo-paging [pageSize]="12"></dxo-paging>
+                <dxo-pager
+                    [showPageSizeSelector]="true"
+                    [allowedPageSizes]="[8, 12, 20]"
+                ></dxo-pager>
+            </dx-data-grid>
+        </div>
+    </div>
+</div>
